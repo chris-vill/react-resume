@@ -1,24 +1,14 @@
 import React from 'react';
 
-import classes from './Icon.styl';
+import classes from './Description.styl';
 
-const Icon = ({ name, extClass }) => {
-
-  const faMapping = {
-    physicalAddress: ["fas", "map-marker-alt"],
-    emailAddress: ["fas", "envelope"],
-    phoneNumber: ["fas", "phone"],
-    linkedIn: ["fab", "linkedin"],
-    github: ["fab", "github"],
-    star: ["fas", "star"],
-    arrowRight: ["fas", "long-arrow-alt-right"]
-  };
+const Description = ({ data, extClass }) => {
 
   return (
-    <div className={ `${ classes["icon"] } ${ extClass }` }>
-      <FontAwesomeIcon icon={ faMapping[name] }/>
-    </div>
+    <article className={ `${ classes["description"] } ${ extClass }` }>
+      { data }
+    </article>
   );
 }
 
-export default Icon;
+export default Description;

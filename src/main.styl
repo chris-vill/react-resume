@@ -22,9 +22,9 @@ ul
 
 // CONSTANTS ===================================================================
 
-$main-theme = #ffa300
-$name-font = "Comic Sans MS"
-$job-title-font = "Copperplate"
+$main-theme    = #ffa300
+$header-stripe = #4d91ff
+$aside-theme   = #b3d7ff
 
 // CONSTANTS ===================================================================
 
@@ -49,19 +49,25 @@ $job-title-font = "Copperplate"
   display grid
   grid-template-columns 1fr 3fr
   grid-auto-rows minmax(min-content, max-content)
+  grid-template-areas "header  header          header"\
+                      "side    description     description"\
+                      "side    workExperience  workExperience"\
+                      "side    projects        projects"
 
   & > header
-    grid-column: 1 / -1
-    grid-row 1 / auto
-    margin-bottom 18px
+    grid-area header
+    margin-bottom 16px
     padding-bottom 10px
     display flex
     justify-content center
     position relative
 
   aside
+    background-color $aside-theme
+    grid-area side
     border-right 2px solid $main-theme
     padding-right 16px
+    padding-top 12px
 
   section
     padding-left 16px
@@ -70,6 +76,19 @@ $job-title-font = "Copperplate"
       font-weight bold
       font-size 18px
       padding-bottom 8px
+
+.description
+  grid-area description
+
+.work-experiences
+  grid-area workExperience
+
+  article:last-child
+    border-bottom 2px solid $main-theme
+
+.projects
+  grid-area projects
+  padding-top 12px
 
 .header-title
   display flex
@@ -81,7 +100,6 @@ $job-title-font = "Copperplate"
     margin 0
 
   h1
-    font-family $name-font
     font-size 30px
     padding 10px 23px
     margin-bottom 8px
@@ -89,8 +107,7 @@ $job-title-font = "Copperplate"
     background-color white
 
   h2
-    font-family $job-title-font
-    font-size 26px
+    font-size 20px
 
 .stripe
   position absolute
@@ -98,6 +115,5 @@ $job-title-font = "Copperplate"
   left 0
   right 0
   bottom 0
-  background-color gray
-  opacity 0.15
+  background-color $header-stripe
   z-index -1

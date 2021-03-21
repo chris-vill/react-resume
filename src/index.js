@@ -6,14 +6,17 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import './main.styl';
 import resumeData from '../assets/resume-data';
-import { ContactInfo, Education, Skills, WorkExperience } from './components';
+import { ContactInfo, Education, Skills, WorkExperience, Project, Description } from './components';
 
 library.add(fab);
 library.add(far);
 library.add(fas);
 
 const WorkExperiences = resumeData.workExperience
-  .map(d => <WorkExperience data={ d }/>);
+  .map((d, i) => <WorkExperience data={ d } key={ i }/>);
+
+const Projects = resumeData.projects
+  .map((p, i) => <Project data={ p } key={ i }/>);
 
 ReactDom.render(
   (
@@ -30,9 +33,16 @@ ReactDom.render(
         <Skills data={ resumeData.skills }/>
         <Education data={ resumeData.education }/>
       </aside>
-      <section>
+      <section className="description">
+        <Description data={ resumeData.description }/>
+      </section>
+      <section className="work-experiences">
         <header>Work Experience</header>
         { WorkExperiences }
+      </section>
+      <section className="projects">
+        <header>Personal Projects</header>
+        { Projects }
       </section>
     </div>
   ),

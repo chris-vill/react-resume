@@ -1,9 +1,9 @@
 import React from 'react';
 import { Icon } from '../';
-import classes from './WorkExperience.styl';
+import classes from './Project.styl';
 
-const WorkExperience = ({
-  data: { jobTitle, company, physicalAddress, dateStart, dateEnd, details },
+const Project = ({
+  data: { title, repository, details },
   extClass
 }) => {
 
@@ -15,12 +15,12 @@ const WorkExperience = ({
   ))
 
   return (
-    <article className={ `${ classes["work-experience"] } ${ extClass }` }>
+    <article className={ classes["project"] }>
       <header>
         <Icon name="star" extClass={ classes["icon"] }/>
-        <h3>{ jobTitle }</h3>
+        <h3>{ title }</h3>
       </header>
-      <span className={ classes["subtitle"] }>{ company } &nbsp; <b>/</b> &nbsp; { dateStart } - { dateEnd } &nbsp; <b>/</b> &nbsp;  { physicalAddress }</span>
+      <a className={ classes["subtitle"] } href={ repository } target="_blank">{ repository }</a>
       <div className={ classes["details"] }>
         { Details }
       </div>
@@ -28,4 +28,4 @@ const WorkExperience = ({
   );
 }
 
-export default WorkExperience;
+export default Project;
